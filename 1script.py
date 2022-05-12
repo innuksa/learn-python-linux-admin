@@ -10,12 +10,12 @@ try:
     findResults = string.split(commandOutput, "\n")
 
     #output find results, along with permissions
-    print "Files:"
-    print commandOutput
-    print "================================"
+    print("Files:")
+    print(commandOutput)
+    print("================================")
     for file in findResults:
         mode=stat.S_IMODE(os.lstat(file)[stat.ST_MODE])
-        print "\nPermissions for file ", file, ":"
+        print("\nPermissions for file ", file, ":")
         for level in "USR", "GRP", "OTH":
             for perm in "R", "W", "X":
                 if mode & getattr(stat,"S_I"+perm+level):
@@ -23,4 +23,4 @@ try:
                 else:
                     print level, " does NOT have ", perm, " permission"
 except:
-    print "There was a problem - check the message above"
+    print("There was a problem - check the message above")
